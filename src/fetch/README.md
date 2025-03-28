@@ -1,6 +1,11 @@
 # Fetch MCP Server
-
 A Model Context Protocol server that provides web content fetching capabilities. This server enables LLMs to retrieve and process content from web pages, converting HTML to markdown for easier consumption.
+
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-fetch%22%5D%2C%22env%22%3A%7B%7D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-fetch%22%5D%2C%22env%22%3A%7B%7D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Ffetch%22%5D%2C%22env%22%3A%7B%7D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Ffetch%22%5D%2C%22env%22%3A%7B%7D%7D)
+
+[![Install with Python in VS Code](https://img.shields.io/badge/VS_Code-Python-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22python%22%2C%22args%22%3A%5B%22-m%22%2C%22mcp_server_fetch%22%5D%2C%22env%22%3A%7B%7D%7D) [![Install with Python in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Python-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22fetch%22%2C%22command%22%3A%22python%22%2C%22args%22%3A%5B%22-m%22%2C%22mcp_server_fetch%22%5D%2C%22env%22%3A%7B%7D%7D)
 
 The fetch tool will truncate the response, but by using the `start_index` argument, you can specify where to start the content extraction. This lets models read a webpage in chunks, until they find the information they need.
 
@@ -130,6 +135,56 @@ For examples of other MCP servers and implementation patterns, see:
 https://github.com/modelcontextprotocol/servers
 
 Pull requests are welcome! Feel free to contribute new ideas, bug fixes, or enhancements to make mcp-server-fetch even more powerful and useful.
+
+## VS Code Installation
+
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "fetch": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-fetch"
+    ]
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "fetch": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "mcp/fetch"
+    ]
+  }
+}
+```
+
+#### Using Python
+
+```json
+{
+  "fetch": {
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_server_fetch"
+    ]
+  }
+}
+```
 
 ## License
 

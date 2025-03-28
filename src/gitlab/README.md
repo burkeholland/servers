@@ -1,6 +1,9 @@
 # GitLab MCP Server
-
 MCP Server for the GitLab API, enabling project management, file operations, and more.
+
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22gitlab%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-gitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_api_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22gitlab_api_url%22%2C%22description%22%3A%22GitLab%20API%20URL%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22gitlab%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-gitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_api_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22gitlab_api_url%22%2C%22description%22%3A%22GitLab%20API%20URL%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22gitlab%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22GITLAB_PERSONAL_ACCESS_TOKEN%22%2C%22-e%22%2C%22GITLAB_API_URL%22%2C%22mcp%2Fgitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_api_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22gitlab_api_url%22%2C%22description%22%3A%22GitLab%20API%20URL%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22gitlab%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22GITLAB_PERSONAL_ACCESS_TOKEN%22%2C%22-e%22%2C%22GITLAB_API_URL%22%2C%22mcp%2Fgitlab%22%5D%2C%22env%22%3A%7B%22GITLAB_PERSONAL_ACCESS_TOKEN%22%3A%22%24%7Binput%3Agitlab_token%7D%22%2C%22GITLAB_API_URL%22%3A%22%24%7Binput%3Agitlab_api_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22gitlab_token%22%2C%22description%22%3A%22GitLab%20Personal%20Access%20Token%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22gitlab_api_url%22%2C%22description%22%3A%22GitLab%20API%20URL%22%2C%22default%22%3A%22https%3A%2F%2Fgitlab.com%2Fapi%2Fv4%22%7D%5D%7D)
 
 ### Features
 
@@ -166,6 +169,78 @@ docker build -t vonwig/gitlab:mcp -f src/gitlab/Dockerfile .
 
 - `GITLAB_PERSONAL_ACCESS_TOKEN`: Your GitLab personal access token (required)
 - `GITLAB_API_URL`: Base URL for GitLab API (optional, defaults to `https://gitlab.com/api/v4`)
+
+## VS Code Installation
+
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "gitlab": {
+    "inputs": [
+      {
+        "id": "gitlab_token",
+        "description": "GitLab Personal Access Token",
+        "password": true
+      },
+      {
+        "id": "gitlab_api_url",
+        "description": "GitLab API URL",
+        "default": "https://gitlab.com/api/v4"
+      }
+    ],
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-gitlab"
+    ],
+    "env": {
+      "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
+      "GITLAB_API_URL": "${input:gitlab_api_url}"
+    }
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "gitlab": {
+    "inputs": [
+      {
+        "id": "gitlab_token",
+        "description": "GitLab Personal Access Token",
+        "password": true
+      },
+      {
+        "id": "gitlab_api_url",
+        "description": "GitLab API URL",
+        "default": "https://gitlab.com/api/v4"
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "GITLAB_PERSONAL_ACCESS_TOKEN",
+      "-e",
+      "GITLAB_API_URL",
+      "mcp/gitlab"
+    ],
+    "env": {
+      "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
+      "GITLAB_API_URL": "${input:gitlab_api_url}"
+    }
+  }
+}
+```
 
 ## License
 

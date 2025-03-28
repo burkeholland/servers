@@ -2,6 +2,10 @@
 
 MCP Server for the Google Maps API.
 
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22google-maps%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-google-maps%22%5D%2C%22env%22%3A%7B%22GOOGLE_MAPS_API_KEY%22%3A%22%24%7Binput%3Agoogle_maps_api_key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22google_maps_api_key%22%2C%22description%22%3A%22Google%20Maps%20API%20Key%22%2C%22password%22%3Atrue%7D%5D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22google-maps%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-google-maps%22%5D%2C%22env%22%3A%7B%22GOOGLE_MAPS_API_KEY%22%3A%22%24%7Binput%3Agoogle_maps_api_key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22google_maps_api_key%22%2C%22description%22%3A%22Google%20Maps%20API%20Key%22%2C%22password%22%3Atrue%7D%5D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22google-maps%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22GOOGLE_MAPS_API_KEY%22%2C%22mcp%2Fgoogle-maps%22%5D%2C%22env%22%3A%7B%22GOOGLE_MAPS_API_KEY%22%3A%22%24%7Binput%3Agoogle_maps_api_key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22google_maps_api_key%22%2C%22description%22%3A%22Google%20Maps%20API%20Key%22%2C%22password%22%3Atrue%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22google-maps%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22GOOGLE_MAPS_API_KEY%22%2C%22mcp%2Fgoogle-maps%22%5D%2C%22env%22%3A%7B%22GOOGLE_MAPS_API_KEY%22%3A%22%24%7Binput%3Agoogle_maps_api_key%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22google_maps_api_key%22%2C%22description%22%3A%22Google%20Maps%20API%20Key%22%2C%22password%22%3Atrue%7D%5D%7D)
+
 ## Tools
 
 1. `maps_geocode`
@@ -107,6 +111,64 @@ Docker build:
 
 ```bash
 docker build -t mcp/google-maps -f src/google-maps/Dockerfile .
+```
+
+## VS Code Installation
+
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "google-maps": {
+    "inputs": [
+      {
+        "id": "google_maps_api_key",
+        "description": "Google Maps API Key",
+        "password": true
+      }
+    ],
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-google-maps"
+    ],
+    "env": {
+      "GOOGLE_MAPS_API_KEY": "${input:google_maps_api_key}"
+    }
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "google-maps": {
+    "inputs": [
+      {
+        "id": "google_maps_api_key",
+        "description": "Google Maps API Key",
+        "password": true
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "GOOGLE_MAPS_API_KEY",
+      "mcp/google-maps"
+    ],
+    "env": {
+      "GOOGLE_MAPS_API_KEY": "${input:google_maps_api_key}"
+    }
+  }
+}
 ```
 
 ## License

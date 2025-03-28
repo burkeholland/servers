@@ -1,8 +1,11 @@
 # mcp-server-git: A git MCP server
 
 ## Overview
-
 A Model Context Protocol server for Git repository interaction and automation. This server provides tools to read, search, and manipulate Git repositories via Large Language Models.
+
+[![Install with Python in VS Code](https://img.shields.io/badge/VS_Code-Python-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22git%22%2C%22command%22%3A%22python%22%2C%22args%22%3A%5B%22-m%22%2C%22mcp_server_git%22%2C%22--repository%22%2C%22%24%7Binput%3Agit_repository_path%7D%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22git_repository_path%22%2C%22description%22%3A%22Path%20to%20Git%20repository%22%7D%5D%7D) [![Install with Python in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Python-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22git%22%2C%22command%22%3A%22python%22%2C%22args%22%3A%5B%22-m%22%2C%22mcp_server_git%22%2C%22--repository%22%2C%22%24%7Binput%3Agit_repository_path%7D%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22git_repository_path%22%2C%22description%22%3A%22Path%20to%20Git%20repository%22%7D%5D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22git%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7Binput%3Aworkspace_path%7D%2Cdst%3D%2Fmounted-workspace%22%2C%22mcp%2Fgit%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22workspace_path%22%2C%22description%22%3A%22Path%20to%20directory%20containing%20Git%20repositories%22%2C%22default%22%3A%22%24%7BworkspaceFolder%7D%22%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22git%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22--rm%22%2C%22-i%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7Binput%3Aworkspace_path%7D%2Cdst%3D%2Fmounted-workspace%22%2C%22mcp%2Fgit%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22workspace_path%22%2C%22description%22%3A%22Path%20to%20directory%20containing%20Git%20repositories%22%2C%22default%22%3A%22%24%7BworkspaceFolder%7D%22%7D%5D%7D)
 
 Please note that mcp-server-git is currently in early development. The functionality and available tools are subject to change and expansion as we continue to develop and improve the server.
 
@@ -259,6 +262,57 @@ cd src/git
 docker build -t mcp/git .
 ```
 
-## License
+## VS Code Installation
 
-This MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using Python
+
+```json
+{
+  "git": {
+    "inputs": [
+      {
+        "id": "git_repository_path",
+        "description": "Path to Git repository"
+      }
+    ],
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_server_git",
+      "--repository",
+      "${input:git_repository_path}"
+    ]
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "git": {
+    "inputs": [
+      {
+        "id": "workspace_path",
+        "description": "Path to directory containing Git repositories",
+        "default": "${workspaceFolder}"
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "--rm",
+      "-i",
+      "--mount",
+      "type=bind,src=${input:workspace_path},dst=/mounted-workspace",
+      "mcp/git"
+    ]
+  }
+}
+```
+
+## License

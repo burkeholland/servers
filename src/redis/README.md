@@ -1,6 +1,9 @@
 # Redis
-
 A Model Context Protocol server that provides access to Redis databases. This server enables LLMs to interact with Redis key-value stores through a set of standardized tools.
+
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22redis%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20Connection%20URL%20(redis%3A%2F%2Fhostname%3Aport)%22%2C%22password%22%3Atrue%7D%5D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22redis%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-redis%22%5D%2C%22env%22%3A%7B%22REDIS_URL%22%3A%22%24%7Binput%3Aredis_url%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20Connection%20URL%20(redis%3A%2F%2Fhostname%3Aport)%22%2C%22password%22%3Atrue%7D%5D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22redis%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Fredis%22%2C%22%24%7Binput%3Aredis_url%7D%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20Connection%20URL%20(redis%3A%2F%2Fhostname%3Aport)%22%2C%22default%22%3A%22redis%3A%2F%2F127.0.0.1%3A6379%22%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22redis%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Fredis%22%2C%22%24%7Binput%3Aredis_url%7D%22%5D%2C%22env%22%3A%7B%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22redis_url%22%2C%22description%22%3A%22Redis%20Connection%20URL%20(redis%3A%2F%2Fhostname%3Aport)%22%2C%22default%22%3A%22redis%3A%2F%2F127.0.0.1%3A6379%22%7D%5D%7D)
 
 ## Components
 
@@ -73,6 +76,60 @@ Docker:
 
 ```sh
 docker build -t mcp/redis -f src/redis/Dockerfile . 
+```
+
+## VS Code Installation
+
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "redis": {
+    "inputs": [
+      {
+        "id": "redis_url",
+        "description": "Redis Connection URL (redis://hostname:port)",
+        "password": true
+      }
+    ],
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-redis"
+    ],
+    "env": {
+      "REDIS_URL": "${input:redis_url}"
+    }
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "redis": {
+    "inputs": [
+      {
+        "id": "redis_url",
+        "description": "Redis Connection URL (redis://hostname:port)",
+        "default": "redis://127.0.0.1:6379"
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "mcp/redis",
+      "${input:redis_url}"
+    ]
+  }
+}
 ```
 
 ## License

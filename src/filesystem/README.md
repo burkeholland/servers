@@ -1,6 +1,9 @@
 # Filesystem MCP Server
-
 Node.js server implementing Model Context Protocol (MCP) for filesystem operations.
+
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22filesystem%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-filesystem%22%5D%2C%22env%22%3A%7B%7D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22filesystem%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-filesystem%22%5D%2C%22env%22%3A%7B%7D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22filesystem%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7Binput%3Aproject_directory%7D%2Cdst%3D%2Fprojects%2Fworkspace%22%2C%22mcp%2Ffilesystem%22%2C%22%2Fprojects%22%5D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22project_directory%22%2C%22description%22%3A%22Directory to make available to the server%22%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22filesystem%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22--mount%22%2C%22type%3Dbind%2Csrc%3D%24%7Binput%3Aproject_directory%7D%2Cdst%3D%2Fprojects%2Fworkspace%22%2C%22mcp%2Ffilesystem%22%2C%22%2Fprojects%22%5D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22project_directory%22%2C%22description%22%3A%22Directory to make available to the server%22%7D%5D%7D)
 
 ## Features
 
@@ -149,6 +152,52 @@ Docker build:
 
 ```bash
 docker build -t mcp/filesystem -f src/filesystem/Dockerfile .
+```
+
+## VS Code Installation
+
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "filesystem": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-filesystem",
+      "${workspaceFolder}"
+    ]
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "filesystem": {
+    "inputs": [
+      {
+        "id": "project_directory",
+        "description": "Directory to make available to the server"
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "--mount", 
+      "type=bind,src=${input:project_directory},dst=/projects/workspace",
+      "mcp/filesystem",
+      "/projects"
+    ]
+  }
+}
 ```
 
 ## License

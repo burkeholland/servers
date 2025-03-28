@@ -1,6 +1,9 @@
 # Slack MCP Server
-
 MCP Server for the Slack API, enabling Claude to interact with Slack workspaces.
+
+[![Install with NPM in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22slack%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-slack%22%5D%2C%22env%22%3A%7B%22SLACK_BOT_TOKEN%22%3A%22%24%7Binput%3Aslack_bot_token%7D%22%2C%22SLACK_TEAM_ID%22%3A%22%24%7Binput%3Aslack_team_id%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22slack_bot_token%22%2C%22description%22%3A%22Slack%20Bot%20Token%20(xoxb-)%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22slack_team_id%22%2C%22description%22%3A%22Slack%20Team%20ID%20(T...)%22%7D%5D%7D) [![Install with NPM in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22slack%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-slack%22%5D%2C%22env%22%3A%7B%22SLACK_BOT_TOKEN%22%3A%22%24%7Binput%3Aslack_bot_token%7D%22%2C%22SLACK_TEAM_ID%22%3A%22%24%7Binput%3Aslack_team_id%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22slack_bot_token%22%2C%22description%22%3A%22Slack%20Bot%20Token%20(xoxb-)%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22slack_team_id%22%2C%22description%22%3A%22Slack%20Team%20ID%20(T...)%22%7D%5D%7D)
+
+[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22slack%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22SLACK_BOT_TOKEN%22%2C%22-e%22%2C%22SLACK_TEAM_ID%22%2C%22mcp%2Fslack%22%5D%2C%22env%22%3A%7B%22SLACK_BOT_TOKEN%22%3A%22%24%7Binput%3Aslack_bot_token%7D%22%2C%22SLACK_TEAM_ID%22%3A%22%24%7Binput%3Aslack_team_id%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22slack_bot_token%22%2C%22description%22%3A%22Slack%20Bot%20Token%20(xoxb-)%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22slack_team_id%22%2C%22description%22%3A%22Slack%20Team%20ID%20(T...)%22%7D%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22slack%22%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22SLACK_BOT_TOKEN%22%2C%22-e%22%2C%22SLACK_TEAM_ID%22%2C%22mcp%2Fslack%22%5D%2C%22env%22%3A%7B%22SLACK_BOT_TOKEN%22%3A%22%24%7Binput%3Aslack_bot_token%7D%22%2C%22SLACK_TEAM_ID%22%3A%22%24%7Binput%3Aslack_team_id%7D%22%7D%2C%22inputs%22%3A%5B%7B%22id%22%3A%22slack_bot_token%22%2C%22description%22%3A%22Slack%20Bot%20Token%20(xoxb-)%22%2C%22password%22%3Atrue%7D%2C%7B%22id%22%3A%22slack_team_id%22%2C%22description%22%3A%22Slack%20Team%20ID%20(T...)%22%7D%5D%7D)
 
 ## Tools
 
@@ -151,6 +154,74 @@ Docker build:
 docker build -t mcp/slack -f src/slack/Dockerfile .
 ```
 
-## License
+## VS Code Installation
 
-This MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.
+### Manual Installation
+
+Add the following to your `.vscode/mcp.json` file:
+
+#### Using NPM
+
+```json
+{
+  "slack": {
+    "inputs": [
+      {
+        "id": "slack_bot_token",
+        "description": "Slack Bot Token (xoxb-)",
+        "password": true
+      },
+      {
+        "id": "slack_team_id",
+        "description": "Slack Team ID (T...)"
+      }
+    ],
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-slack"
+    ],
+    "env": {
+      "SLACK_BOT_TOKEN": "${input:slack_bot_token}",
+      "SLACK_TEAM_ID": "${input:slack_team_id}"
+    }
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "slack": {
+    "inputs": [
+      {
+        "id": "slack_bot_token",
+        "description": "Slack Bot Token (xoxb-)",
+        "password": true
+      },
+      {
+        "id": "slack_team_id",
+        "description": "Slack Team ID (T...)"
+      }
+    ],
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "SLACK_BOT_TOKEN",
+      "-e",
+      "SLACK_TEAM_ID",
+      "mcp/slack"
+    ],
+    "env": {
+      "SLACK_BOT_TOKEN": "${input:slack_bot_token}",
+      "SLACK_TEAM_ID": "${input:slack_team_id}"
+    }
+  }
+}
+```
+
+## License

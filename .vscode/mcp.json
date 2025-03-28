@@ -1,0 +1,10 @@
+{
+    "servers": {
+        "vscode-mcp-docs": {
+            "command": "node",
+            "args": [
+                "dev/vscode-mcp-installer-docs/build/index.js"
+            ]
+        }
+    }
+}
